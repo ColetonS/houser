@@ -21,3 +21,5 @@ massive(CONNECTION_STRING)
   .catch(err => console.log(`Can't connect to db.`, err));
 
   app.get('/api/properties', ctrl.getProperties)
+  app.post('/api/properties', ctrl.addProperty)
+  app.delete('/api/properties', ctrl.deleteProperty)
