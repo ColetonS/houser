@@ -27,11 +27,17 @@ export default class Dashboard extends Component {
                 {this.state.properties.map(house => {
                     return (
                         <div>
-                            <h3>{house.property_name}</h3>
+                            <House
+                               property_name={house.property_name}
+                               address={house.address}
+                               city={house.city}
+                               state={house.state}
+                               zip={house.zip}
+                               key={house.id}
+                               />
                         </div>
                     )
                 })}
-                <House />
                 <Link to = '/wizard'>
                     <button>Add New Property</button>
                 </Link>

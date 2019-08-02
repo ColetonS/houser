@@ -7,9 +7,14 @@ export default class House extends Component {
     }
 
     render() {
+        let {property_name, address, city, state, zip} = this.props
         return (
             <div>
-                House
+                <h3>{property_name}</h3>
+                <h3>{address}</h3>
+                <h3>{city}</h3>
+                <h3>{state}</h3>
+                <h3>{zip}</h3>
             </div>
         )
     }
