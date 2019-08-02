@@ -12,6 +12,13 @@ module.exports = {
         res.status(201).send(newProperty)
     },
     deleteProperty: (req, res) => {
-        res.sendStatus(200)
+        const {id} = req.params
+        const db = req.app.get('db')
+        db.delete_property([id]).then(result => {
+            res.status(200).send(result)
+        }).catch(err => {
+            console.log(err)
+            res.status(400).send('failed to delete property')
+        })
     }
 }

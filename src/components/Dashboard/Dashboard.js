@@ -19,6 +19,19 @@ export default class Dashboard extends Component {
         })
     }
 
+    deleteProperty = (id) => {
+        axios
+            .delete(`/api/properties/${id}`)
+            .then(res => {
+                this.setState({
+                    properties: res.data
+                })
+            })
+            .catch(() => {
+                alert('failed to delete')
+            })
+    }
+
     render() {
 
         return (
@@ -34,6 +47,8 @@ export default class Dashboard extends Component {
                                state={house.state}
                                zip={house.zip}
                                key={house.id}
+                               id={house.id}
+                               deleteProperty={this.deleteProperty}
                                />
                         </div>
                     )

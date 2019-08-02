@@ -22,4 +22,4 @@ massive(CONNECTION_STRING)
 
   app.get('/api/properties', ctrl.getProperties)
   app.post('/api/properties', ctrl.addProperty)
-  app.delete('/api/properties', ctrl.deleteProperty)
+  app.delete('/api/properties/:id', ctrl.deleteProperty)
