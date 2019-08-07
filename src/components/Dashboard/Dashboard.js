@@ -13,10 +13,12 @@ export default class Dashboard extends Component {
 
     componentDidMount() {
         axios.get('/api/properties').then(res => {
+            console.log(res.data)
             this.setState({
                 properties: res.data
             })
         })
+        console.log('hit')
     }
 
     deleteProperty = (id) => {

@@ -23,16 +23,17 @@ export default class StepThree extends Component {
 
    
 
-    submit = () => {
+    submit = async () => {
         store.dispatch({
             type: STEP_THREE,
             payload: this.state
         })
         let reduxState = store.getState()
-        axios.post('/api/properties', reduxState).catch(err => alert(err))
+       await axios.post('/api/properties', reduxState).catch(err => alert(err))
         store.dispatch({
             type: CANCEL
         })
+        this.props.history.push('/')
     }
 
     render() {
@@ -44,9 +45,9 @@ export default class StepThree extends Component {
                 <input type='number' onChange={e => this.handleChange(e)} name='rent'/>
                 <br />
                 <br />
-                <Link to ='/'>
+                {/* <Link to ='/'> */}
                 <button onClick={this.submit}>Complete</button>
-                </Link>
+                {/* </Link> */}
             </div>
         )
     }
