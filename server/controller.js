@@ -6,9 +6,9 @@ module.exports = {
         })
     },
     addProperty: async (req, res) => {
-        const {propertyName, address, city, state, zip} = req.body
+        const {propertyName, address, city, state, zip, img, mortgage, rent} = req.body
         const db = req.app.get('db')
-        const newProperty = await db.add_property({property_name: propertyName, address, city, state, zip})
+        const newProperty = await db.add_property({property_name: propertyName, address, city, state, zip, img, mortgage, rent})
         res.status(201).send(newProperty)
     },
     deleteProperty: (req, res) => {

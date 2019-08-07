@@ -1,57 +1,34 @@
-import React, {Component} from 'react'
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+import React, { Component } from "react";
+import { Link, Switch, Route } from "react-router-dom";
+import StepOne from "../StepOne";
+import StepTwo from "../StepTwo";
+import StepThree from "../StepThree";
+import store, { CANCEL } from '../../store'
 
 export default class Wizard extends Component {
-    constructor() {
-        super()
-        
-        this.state = {
-            propertyName: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: 0
-        }
-    }
-
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
+    cancel = () => {
+        store.dispatch({
+            type: CANCEL
         })
     }
-
-    addProperty = () => {
-        axios.post('/api/properties', {
-            propertyName: this.state.propertyName,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip
-        })
-    }
-
+  
     render() {
-        return (
-            <div>
-                <h1>Wizard</h1>
-                <h2>Property Name</h2>
-                <input onChange={e => this.handleChange(e)} type='text' name='propertyName'/>
-                <h2>Address</h2>
-                <input type='text' onChange={e => this.handleChange(e)} name='address'/>
-                <h2>City</h2>
-                <input type='text' onChange={e => this.handleChange(e)} name='city'/>
-                <h2>State</h2>
-                <input type='text' onChange={e => this.handleChange(e)} name='state'/>
-                <h2>Zip</h2>
-                <input type='number' onChange={e => this.handleChange(e)} name='zip'/>
-                <br />
-                <br />
-                <button onClick={this.addProperty}>Complete</button>
-                <br />
-                <br />
-                <Link to='/'><button>Return to Dashboard</button></Link>
-            </div>
-        )
-    }
+    return (
+      <div>
+        <h1>Add New Listing</h1>
+
+        <Switch>
+          <Route path="/wizard/step1" component={StepOne} />
+          <Route path="/wizard/step2" component={StepTwo} />
+          <Route path="/wizard/step3" component={StepThree} />
+        </Switch>
+        <Link to="/wizard/step1">
+          <button>Add New Property</button>
+        </Link>
+        <Link to="/">
+          <button onClick={this.cancel}>Cancel</button>
+        </Link>
+      </div>
+    );
+  }
 }

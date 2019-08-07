@@ -1,4 +1,4 @@
-INSERT INTO houses (property_name, address, city, state, zip)
-VALUES (${property_name}, ${address}, ${city}, ${state}, ${zip});
+INSERT INTO houses (property_name, address, city, state, zip, img, mortgage, rent)
+VALUES (${property_name}, ${address}, ${city}, ${state}, ${zip}, ${img}, ${mortgage}, ${rent});
 
 SELECT * FROM houses;
