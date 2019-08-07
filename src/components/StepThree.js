@@ -33,7 +33,6 @@ export default class StepThree extends Component {
         store.dispatch({
             type: CANCEL
         })
-        this.props.history.push('/')
     }
 
     render() {
@@ -45,9 +44,9 @@ export default class StepThree extends Component {
                 <input type='number' onChange={e => this.handleChange(e)} name='rent'/>
                 <br />
                 <br />
-                {/* <Link to ='/'> */}
+                <Link to ='/'>
                 <button onClick={this.submit}>Complete</button>
-                {/* </Link> */}
+                </Link>
             </div>
         )
     }
